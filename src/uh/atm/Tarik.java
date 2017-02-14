@@ -15,6 +15,7 @@ public class Tarik extends javax.swing.JFrame {
 
     /**
      * Creates new form Main
+     * @param tabungan
      */
     public Tarik(int tabungan) {
         this.tabungan = tabungan;
