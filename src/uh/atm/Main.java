@@ -19,6 +19,28 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        
+    }
+    private int saldo;
+    public void menabung (int bal, int s)
+    {
+        if(s%100!=0)
+        {
+            JOptionPane.showMessageDialog(null,"Mesin ATM BRI tidak menerima uang koin \n Silahkan ulangi kembali!","Transaksi Gagal",0);
+        }
+        else if(s<50000)
+        {
+            JOptionPane.showMessageDialog(null,"Besaran minimal setor tunai adalah Rp50000,00","ERROR",0);
+        }
+        else if(s>=50000)
+        {
+            saldo = bal+s;
+            JOptionPane.showMessageDialog(null,"Saldo anda saat ini sebesar: "+saldo);
+        }
+    }
+    public int getsaldo()
+    {
+        return saldo;
     }
 
     /**
@@ -136,14 +158,40 @@ public class Main extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        String str, str1;
+        int choice, z, pin = 1234, counter = 0, a = 3;
+        int t, s, tab = 50000;
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Main().setVisible(true);
-            }
-        });
         
+       JOptionPane.showMessageDialog(null, "Selamat Datang\n ANJUNGAN TUNAI MANDIRI \n BANK Jatim \n\nMasukkan 4 Digit PIN Anda !", "WELCOME", 1); 
+       try {
+            
+                str = JOptionPane.showInputDialog(null, "Masukkan 4 Digit PIN Anda:",
+                        "ATM BNI SYARIAH-BOJONEGORO", 0);
+                pin = Integer.parseInt(str);
+                counter += 1;
+                if (pin == 1234)//cek pin
+                {
+                        java.awt.EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                        new Main().setVisible(true);
+                        }
+                        });
+                }   
+                else if (counter < 3) {   //jika pin salah
+                    a--; //menghitung kesalahan login dan memberikan kesempatan login
+                    JOptionPane.showMessageDialog(null, "Pin Salah !\nPastikan PIN yang anda masukkan benar", "ERROR", 0);
+                    JOptionPane.showMessageDialog(null, "\nKesempatan login " +
+                            a + " kali lagi" + "\n");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Untuk bantuan nasabah,\nsilahkan menghubungi call center 555123 (Gratis)", "Kartu ATM anda diblokir!", 0);
+                    System.exit(0);
+                }
+               
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Kesalahan !\nPastikan kode yang anda masukkan berformat benar! \nPROGRAM KELUAR! \nTerimakasih", "ERROR", 0);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

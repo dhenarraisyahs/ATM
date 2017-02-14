@@ -70,8 +70,6 @@ public class Cek extends javax.swing.JFrame {
         });
         getContentPane().add(jbKeluar);
         jbKeluar.setBounds(20, 320, 150, 40);
-
-        jlSaldo.setText("Saldo");
         getContentPane().add(jlSaldo);
         jlSaldo.setBounds(20, 110, 310, 50);
 
@@ -80,7 +78,8 @@ public class Cek extends javax.swing.JFrame {
 
     private void jbCekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCekActionPerformed
         // TODO add your handling code here:
-        
+        int tab = 50000;
+        jlSaldo.setText("Saldo Anda sebesar : Rp"+tab);
         
     }//GEN-LAST:event_jbCekActionPerformed
 

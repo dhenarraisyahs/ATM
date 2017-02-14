@@ -138,6 +138,14 @@ public class Setor extends javax.swing.JFrame {
 
     private void jbSetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSetorActionPerformed
         // TODO add your handling code here:
+        String str, str1;
+        int choice, z, pin = 1234, counter = 0, a = 3;
+        int t, s, tab = 50000;
+        str1 = jtf1.getText(); //menabung
+        s = Integer.parseInt(str1);
+        Main hasil = new Main();
+        hasil.menabung(tab, s);
+        tab = hasil.getsaldo();
     }//GEN-LAST:event_jbSetorActionPerformed
 
     private void jbKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbKembaliActionPerformed
