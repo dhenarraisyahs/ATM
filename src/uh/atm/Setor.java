@@ -199,7 +199,7 @@ public class Setor extends javax.swing.JFrame {
         int setor = Integer.parseInt(jtf1.getText());
         if (setor % 100 != 0)
             JOptionPane.showMessageDialog(null,
-                    "Mesin ATM BRI tidak menerima uang koin\nSilahkan ulangi kembali!",
+                    "Mesin ATM Bank Jatim tidak menerima uang koin\nSilahkan ulangi kembali!",
                     "Transaksi Gagal", 0);
         else if (setor < 50000)
             JOptionPane.showMessageDialog(null,
@@ -207,13 +207,12 @@ public class Setor extends javax.swing.JFrame {
                     "ERROR", 0);
         else if (setor >= 50000) {
             tabungan += setor;
-            JOptionPane.showMessageDialog(null,"Saldo Anda saat ini sebesar : " + tabungan);
     }//GEN-LAST:event_jbSetorActionPerformed
 
     private void jbKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbKembaliActionPerformed
         // TODO add your handling code here:
-        new Main().setVisible(true);
-        dispose();
+        new Main(tabungan).setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_jbKembaliActionPerformed
 
@@ -225,6 +224,7 @@ public class Setor extends javax.swing.JFrame {
     private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
         // TODO add your handling code here:
         jtf1.setText("");
+        input += "";
     }//GEN-LAST:event_resetActionPerformed
 
     private void satuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_satuActionPerformed

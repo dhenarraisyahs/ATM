@@ -143,9 +143,8 @@ public class Main extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        String str, str1;
-        int choice, z, pin = 1234, counter = 0, a = 3;
-        int t, s, tab = 50000;
+        String str;
+        int pin = 1234, counter = 0, a = 3;
 
         /* Create and display the form */
         
@@ -153,7 +152,7 @@ public class Main extends javax.swing.JFrame {
        try {
             
                 str = JOptionPane.showInputDialog(null, "Masukkan 4 Digit PIN Anda:",
-                        "ATM BNI SYARIAH-BOJONEGORO", 0);
+                        "ATM Bank Jatim", 0);
                 pin = Integer.parseInt(str);
                 counter += 1;
                 if (pin == 1234)//cek pin

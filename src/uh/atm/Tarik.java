@@ -97,6 +97,11 @@ public class Tarik extends javax.swing.JFrame {
         jtf1.setBounds(20, 100, 310, 40);
 
         reset.setText("reset");
+        reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetActionPerformed(evt);
+            }
+        });
         getContentPane().add(reset);
         reset.setBounds(230, 270, 60, 50);
 
@@ -196,15 +201,16 @@ public class Tarik extends javax.swing.JFrame {
     private void jbTarikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbTarikActionPerformed
         // TODO add your handling code here:
         int tarik = Integer.parseInt(jtf1.getText());
+
         if (tarik % 100 != 0)
-            JOptionPane.showMessageDialog(null, "Mesin ATM BRI tidak menerima uang koin\nSilahkan ulangi lagi", "Transaksi Gagal", 0);
+            JOptionPane.showMessageDialog(null, "Mesin ATM Bank Jatim tidak menerima uang koin\nSilahkan ulangi lagi", "Transaksi Gagal", 0);
         else if (tarik > tabungan)
             JOptionPane.showMessageDialog(null, "Saldo anda tidak mencukupi\nSilahkan lakukan penyetoran", "Transaksi Gagal", 0);
         else if (tarik < 50000)
             JOptionPane.showMessageDialog(null, "Besaran minimal pengambilan tunai adalah Rp50.000,00", "Transaksi Gagal", 0);
         else {
             tabungan -= tarik;
-            JOptionPane.showMessageDialog(null, "Saldo anda saat ini sebesar : " + tabungan);
+            
             if (tabungan <= 50000)
                 JOptionPane.showMessageDialog(null, "Saldo minimal harus Rp50.000,00, segera lakukan penyetoran untuk menghindari penutupan akun", "CAUTION", 2);
         }
@@ -212,7 +218,7 @@ public class Tarik extends javax.swing.JFrame {
 
     private void jbKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbKembaliActionPerformed
         // TODO add your handling code here:
-        new Main().setVisible(true);
+        new Main(tabungan).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jbKembaliActionPerformed
 
@@ -284,6 +290,12 @@ public class Tarik extends javax.swing.JFrame {
         input += "0";
         jtf1.setText(input);
     }//GEN-LAST:event_nolActionPerformed
+
+    private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
+        // TODO add your handling code here:
+        jtf1.setText("");
+        input += "";
+    }//GEN-LAST:event_resetActionPerformed
 
     /**
      * @param args the command line arguments
