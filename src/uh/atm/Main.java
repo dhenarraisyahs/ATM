@@ -10,38 +10,22 @@ package uh.atm;
  * @author dhenarraerine
  */
 import javax.swing.JOptionPane; 
-import java.io.*; 
 public class Main extends javax.swing.JFrame {
     
 
     /**
      * Creates new form Main
      */
+    int tabungan = 50000;
     public Main() {
         initComponents();
         
     }
-    private int saldo;
-    public void menabung (int bal, int s)
-    {
-        if(s%100!=0)
-        {
-            JOptionPane.showMessageDialog(null,"Mesin ATM BRI tidak menerima uang koin \n Silahkan ulangi kembali!","Transaksi Gagal",0);
-        }
-        else if(s<50000)
-        {
-            JOptionPane.showMessageDialog(null,"Besaran minimal setor tunai adalah Rp50000,00","ERROR",0);
-        }
-        else if(s>=50000)
-        {
-            saldo = bal+s;
-            JOptionPane.showMessageDialog(null,"Saldo anda saat ini sebesar: "+saldo);
-        }
+    public Main(int tabungan) {
+        this.tabungan = tabungan;
+        initComponents();
     }
-    public int getsaldo()
-    {
-        return saldo;
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -111,24 +95,25 @@ public class Main extends javax.swing.JFrame {
 
     private void jbCekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCekActionPerformed
         // TODO add your handling code here:
-        new Cek().setVisible(true);
+        new Cek(tabungan).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jbCekActionPerformed
 
     private void jbKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbKeluarActionPerformed
         // TODO add your handling code here:
          dispose();
+         JOptionPane.showMessageDialog(null, "Terimakasih telah bertransaksi di ATM Bank Jatim", "Informasi", 1);
     }//GEN-LAST:event_jbKeluarActionPerformed
 
     private void jbSetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSetorActionPerformed
         // TODO add your handling code here:
-         new Setor().setVisible(true);
+         new Setor(tabungan).setVisible(true);
          this.dispose();
     }//GEN-LAST:event_jbSetorActionPerformed
 
     private void jbTarikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbTarikActionPerformed
         // TODO add your handling code here:
-         new Tarik().setVisible(true);
+         new Tarik(tabungan).setVisible(true);
          this.dispose();
     }//GEN-LAST:event_jbTarikActionPerformed
 

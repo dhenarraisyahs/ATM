@@ -14,9 +14,18 @@ public class Cek extends javax.swing.JFrame {
     /**
      * Creates new form Main
      */
+     int tabungan = 0;
+     
+     public Cek(int tabungan) {
+        this.tabungan = tabungan;
+        initComponents();
+        jlSaldo.setText("Saldo = Rp" + tabungan);
+        initComponents();
+    }
     public Cek() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -78,8 +87,6 @@ public class Cek extends javax.swing.JFrame {
 
     private void jbCekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCekActionPerformed
         // TODO add your handling code here:
-        int tab = 50000;
-        jlSaldo.setText("Saldo Anda sebesar : Rp"+tab);
         
     }//GEN-LAST:event_jbCekActionPerformed
 

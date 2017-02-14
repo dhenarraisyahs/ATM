@@ -9,14 +9,19 @@ package uh.atm;
  *
  * @author dhenarraerine
  */
+import javax.swing.JOptionPane;
 public class Tarik extends javax.swing.JFrame {
+    int tabungan = 0;
 
     /**
      * Creates new form Main
      */
+    public Tarik(int tabungan) {
+        this.tabungan = tabungan;
+        initComponents();
+    }
     public Tarik() {
         initComponents();
-        String tarik; 
     }
 
     /**
@@ -150,34 +155,59 @@ public class Tarik extends javax.swing.JFrame {
         enam.setBounds(160, 210, 60, 50);
 
         tujuh.setText("7");
+        tujuh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tujuhActionPerformed(evt);
+            }
+        });
         getContentPane().add(tujuh);
         tujuh.setBounds(20, 270, 60, 50);
 
         delapan.setText("8");
+        delapan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delapanActionPerformed(evt);
+            }
+        });
         getContentPane().add(delapan);
         delapan.setBounds(90, 270, 60, 50);
 
         sembilan.setText("9");
+        sembilan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sembilanActionPerformed(evt);
+            }
+        });
         getContentPane().add(sembilan);
         sembilan.setBounds(160, 270, 60, 50);
 
         nol.setText("0");
+        nol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nolActionPerformed(evt);
+            }
+        });
         getContentPane().add(nol);
         nol.setBounds(230, 210, 60, 50);
 
         setBounds(0, 0, 367, 424);
     }// </editor-fold>//GEN-END:initComponents
-
+       String input = "";
     private void jbTarikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbTarikActionPerformed
         // TODO add your handling code here:
-        String str, str1;
-        int choice, z, pin = 1234, counter = 0, a = 3;
-        int t, s, tab = 50000;
-        str1 = jtf1.getText(); //menabung
-        s = Integer.parseInt(str1);
-        Main hasil = new Main();
-        hasil.menabung(tab, s);
-        tab = hasil.getsaldo();
+        int tarik = Integer.parseInt(jtf1.getText());
+        if (tarik % 100 != 0)
+            JOptionPane.showMessageDialog(null, "Mesin ATM BRI tidak menerima uang koin\nSilahkan ulangi lagi", "Transaksi Gagal", 0);
+        else if (tarik > tabungan)
+            JOptionPane.showMessageDialog(null, "Saldo anda tidak mencukupi\nSilahkan lakukan penyetoran", "Transaksi Gagal", 0);
+        else if (tarik < 50000)
+            JOptionPane.showMessageDialog(null, "Besaran minimal pengambilan tunai adalah Rp50.000,00", "Transaksi Gagal", 0);
+        else {
+            tabungan -= tarik;
+            JOptionPane.showMessageDialog(null, "Saldo anda saat ini sebesar : " + tabungan);
+            if (tabungan <= 50000)
+                JOptionPane.showMessageDialog(null, "Saldo minimal harus Rp50.000,00, segera lakukan penyetoran untuk menghindari penutupan akun", "CAUTION", 2);
+        }
     }//GEN-LAST:event_jbTarikActionPerformed
 
     private void jbKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbKembaliActionPerformed
@@ -197,39 +227,63 @@ public class Tarik extends javax.swing.JFrame {
 
     private void satuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_satuActionPerformed
         // TODO add your handling code here:
-        String satu = "1";
-        jtf1.setText(satu);
+        input += "1";
+        jtf1.setText(input);
     }//GEN-LAST:event_satuActionPerformed
 
     private void duaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duaActionPerformed
         // TODO add your handling code here:
-        String dua = "2";
-        jtf1.setText(dua);
+        input += "2";
+        jtf1.setText(input);
     }//GEN-LAST:event_duaActionPerformed
 
     private void tigaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tigaActionPerformed
         // TODO add your handling code here:
-        String tiga = "3";
-        jtf1.setText(tiga);
+        input += "3";
+        jtf1.setText(input);
     }//GEN-LAST:event_tigaActionPerformed
 
     private void empatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empatActionPerformed
         // TODO add your handling code here:
-        String empat = "4";
-        jtf1.setText(empat);
+        input += "4";
+        jtf1.setText(input);
     }//GEN-LAST:event_empatActionPerformed
 
     private void limaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limaActionPerformed
         // TODO add your handling code here:
-        String lima = "5";
-        jtf1.setText(lima);
+        input += "5";
+        jtf1.setText(input);
     }//GEN-LAST:event_limaActionPerformed
 
     private void enamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enamActionPerformed
         // TODO add your handling code here:
-        String enam = "6";
-        jtf1.setText(enam);
+        input += "6";
+        jtf1.setText(input);
     }//GEN-LAST:event_enamActionPerformed
+
+    private void tujuhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tujuhActionPerformed
+        // TODO add your handling code here:
+        input += "7";
+        jtf1.setText(input);
+    }//GEN-LAST:event_tujuhActionPerformed
+
+    private void delapanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delapanActionPerformed
+        // TODO add your handling code here:
+        input += "8";
+        jtf1.setText(input);
+    }//GEN-LAST:event_delapanActionPerformed
+
+    private void sembilanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sembilanActionPerformed
+        // TODO add your handling code here:
+        input += "9";
+        jtf1.setText(input);
+    }//GEN-LAST:event_sembilanActionPerformed
+
+    private void nolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nolActionPerformed
+        // TODO add your handling code here:
+        input += "0";
+        jtf1.setText(input);
+    }//GEN-LAST:event_nolActionPerformed
 
     /**
      * @param args the command line arguments
